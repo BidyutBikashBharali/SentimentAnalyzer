@@ -3,7 +3,7 @@ from transformers import pipeline
 # source: https://stackoverflow.com/questions/59122308/heroku-slug-size-too-large-after-installing-pytorch
 import pandas as pd
 import os, sys
-sentiment_pipeline = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment")
+sentiment_pipeline = pipeline("sentiment-analysis")
 
 
 
@@ -38,19 +38,19 @@ def analyze_comments(all_comments):
         # print(sentiment_results)
         for result in sentiment_results:
             
-            if result.get('label').lower() == 'positive':
+            if result.get('label') == 'POSITIVE':
                 pve["sentiment"] = result.get('label')
                 pve["score"] = result.get('score')
                 pvelist.append(result)
                 
             
-            if result.get('label').lower() == 'negative':
+            if result.get('label') == 'NEGATIVE':
                 nve["sentiment"] = result.get('label')
                 nve["score"] = result.get('score')
                 nvelist.append(result)
                 
 
-            if result.get('label').lower() == 'neutral':
+            if result.get('label') == 'NEUTRAL':
                 neu["sentiment"] = result.get('label')
                 neu["score"] = result.get('score')
                 neulist.append(result)
