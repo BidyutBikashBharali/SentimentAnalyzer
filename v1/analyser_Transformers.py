@@ -33,7 +33,7 @@ def analyze_comments(all_comments):
         neu = {}
         neulist = []
 
-        sentiment_results = sentiment_pipeline(all_comments, truncation=True)
+        sentiment_results = sentiment_pipeline(all_comments, truncation=False)
         # truncation = true , source = https://github.com/huggingface/transformers/issues/11065
         # print(sentiment_results)
         for result in sentiment_results:
